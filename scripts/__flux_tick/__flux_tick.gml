@@ -69,29 +69,55 @@ function __flux_tick() {
 		return;
 	}
 	
+	// Get Head Position
+	var _pos = layer_sequence_get_headpos(global.__flux_sequence);
+	var _ev = global.__flux_events[$ _pos];
+	if(is_array(_ev)) {
+		var _i = 0;
+		var _count = array_length(_ev);
+		repeat(_count) {
+			_ev[_i].callback(_ev[_i].caller);
+			_i++;
+		}
+	}
+	
+	
 	// Return if sequence is not finished
 	if(!layer_sequence_is_finished(global.__flux_sequence)) {
 		return;	
 	}
 	
-	// Setup Sequence for Destruction
-	global.__flux_old = global.__flux_sequence;
-	global.__flux_old_timer = 1;
-	global.__flux_sequence = undefined;
-	
-	// If sequence is finished execute callbacks
-	if(!is_undefined(global.__flux_callback)) {
-		global.__flux_callback(global.__flux_callback_caller);
-		
-	}
-	
-	// Reset Transition State if a new sequence wasnt created
-	if(is_undefined(global.__flux_sequence)) {
-		global.__flux_active = false;
-		// Clear Callback
-		global.__flux_callback = undefined;
-		global.__flux_caller = undefined;
-		// Set Buffer Timer
-		global.__flux_buffer_timer = FLUX_BUFFER_TIMER;
+	if(global.__flux_destroy_done) {
+		flux_destroy(global.__flux_callback, global.__flux_caller);
+		//// Setup Sequence for Destruction
+		//global.__flux_old = global.__flux_sequence;
+		//global.__flux_old_timer = 1;
+		//global.__flux_sequence = undefined;
+		//
+		//// If sequence is finished execute callbacks
+		//if(!is_undefined(global.__flux_callback)) {
+		//	global.__flux_callback(global.__flux_callback_caller);
+		//}
+		//
+		//// Reset Transition State if a new sequence wasnt created
+		//if(is_undefined(global.__flux_sequence)) {
+		//	global.__flux_active = false;
+		//	// Clear Callback
+		//	global.__flux_callback = undefined;
+		//	global.__flux_caller = undefined;
+		//	// Set Buffer Timer
+		//	global.__flux_buffer_timer = FLUX_BUFFER_TIMER;
+		//	
+		//	global.__flux_phase = "done";
+		//}
+	} else {
+		// Set ourselves to the waiting phase
+		if(global.__flux_phase != "waiting") {
+			global.__flux_phase = "waiting";
+			// Call the Callback at the start of waiting
+			if(!is_undefined(global.__flux_callback)) {
+				global.__flux_callback(global.__flux_callback_caller);
+			}
+		}
 	}
 }

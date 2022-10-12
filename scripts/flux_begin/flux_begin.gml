@@ -34,7 +34,7 @@ function flux_begin(_seq, _callback = undefined, _caller = undefined) {
 	var _y = camera_get_view_y(global.__flux_view) + floor(camera_get_view_height(global.__flux_view) * 0.5);
 	
 	// Create the Sequence
-	global.__flux_sequence = layer_sequence_create(layer_get_id(FLUX_LAYER), _x, _y, _seq);	
+	global.__flux_sequence = layer_sequence_create(global.__flux_layer, _x, _y, _seq);	
 	
 	// Setup Callbacks
 	if(!is_undefined(_callback)) {
@@ -47,4 +47,7 @@ function flux_begin(_seq, _callback = undefined, _caller = undefined) {
 	
 	// Set Transition State
 	global.__flux_active = true;
+	
+	// Set Flux Phase
+	global.__flux_phase = "running";
 }

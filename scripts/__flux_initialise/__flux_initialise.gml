@@ -34,6 +34,7 @@ function __flux_initialise(){
 	
 	global.__flux_buffer_timer = FLUX_BUFFER_TIMER;
 	
+	global.__flux_destroy_done = true;
 	global.__flux_old = undefined;
 	global.__flux_old_timer = 0;
 	
@@ -41,11 +42,15 @@ function __flux_initialise(){
 	global.__flux_surface = undefined;
 	
 	global.__flux_current_room = room;
+	global.__flux_view = view_camera[0];
 	
 	global.__flux_callback = undefined;
 	global.__flux_callback_caller = undefined;
 	
-	global.__flux_view = view_camera[0];
+	global.__flux_events = {};
+	
+	global.__flux_phase = "start";
+	
 	
 	// Create our surface
 	global.__flux_surface = surface_create(FLUX_SURFACE_WIDTH, FLUX_SURFACE_HEIGHT);
