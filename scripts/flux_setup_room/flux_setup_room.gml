@@ -5,10 +5,10 @@ function flux_setup_room(_room, _sequence, _callback = undefined, _caller = unde
 function flux_setup_room_ext(_room, _sequence, _callback = undefined, _caller = undefined, _speed = 1, _rot = 0, _destroy = true) {
 	layer_set_target_room(_room);
 	
-	
-	global.__flux_target_sequence = __flux_place_sequence(_sequence, 0, 0,  layer_get_id(FLUX_TRANSITION_LAYER));
-	layer_sequence_speedscale(global.__flux_target_sequence, _speed);
-	layer_sequence_angle(global.__flux_target_sequence, _rot);
+	var _pos = __flux_get_camera_position(_sequence, view_camera[0])
+	global.__flux_target_sequence = __flux_place_sequence(_sequence, _pos[0], _pos[1],  layer_get_id(FLUX_TRANSITION_LAYER));
+	global.__flux_target_speed = _speed;
+	global.__flux_target_rotation = _rot;
 	
 	// Setup Callback
 	if(is_undefined(_caller)) _caller = self;

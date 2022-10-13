@@ -33,6 +33,7 @@ function __flux_tick() {
 	}
 	
 	// Handle Flux Events
+	__flux_event_handler();
 	
 	// Don't continue if flux hasn't finished
 	if(!layer_sequence_is_finished(global.__flux_sequence)) {

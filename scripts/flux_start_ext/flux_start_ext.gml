@@ -12,8 +12,11 @@ function flux_start_ext(_sequence, _callback = undefined, _caller = undefined, _
 	// Set Destory State
 	global.__flux_destroy_complete = _destroy;
 	
+	// Setup Sequence Position
+	var _pos = __flux_get_camera_position(_sequence);
+	
 	// Create Sequence
-	global.__flux_sequence = __flux_place_sequence(_sequence, 0, 0);
+	global.__flux_sequence = __flux_place_sequence(_sequence, _pos[0], _pos[1]);
 	layer_sequence_speedscale(global.__flux_sequence, _speed);
 	layer_sequence_angle(global.__flux_sequence, _rot);
 	

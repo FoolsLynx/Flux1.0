@@ -1,0 +1,1 @@
+time_source_destroy(global.__flux_time_source);

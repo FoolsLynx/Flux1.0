@@ -53,6 +53,10 @@ function __flux_initialise(){
 	
 	// Target Rooms
 	global.__flux_target_sequence = undefined;
+	
+	global.__flux_target_speed = 1;
+	global.__flux_target_rotation = 0;
+	
 	global.__flux_target_callback = undefined;
 	global.__flux_target_caller = undefined;
 	global.__flux_target_destroy_complete = true;
@@ -61,6 +65,9 @@ function __flux_initialise(){
 	global.__flux_destroy_complete = true;
 	global.__flux_old_sequence = undefined;
 	global.__flux_old_timer = 0;
+	
+	// View
+	global.__flux_view = view_camera[0];
 	
 	// Finish Flux
 	global.__flux_init = "completed";
