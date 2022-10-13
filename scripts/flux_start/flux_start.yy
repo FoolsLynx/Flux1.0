@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "__flux_tick",
+  "name": "flux_start",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Core",
-    "path": "folders/Flux/System/Core.yy",
+    "name": "Transitions",
+    "path": "folders/Flux/Transitions.yy",
   },
 }

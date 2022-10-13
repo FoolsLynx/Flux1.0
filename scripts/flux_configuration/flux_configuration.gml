@@ -1,0 +1,4 @@
+#macro	FLUX_SURFACE_WIDTH			320
+#macro	FLUX_SURFACE_HEIGHT			180
+
+#macro	FLUX_TRANSITION_LAYER		"seqTransitions"

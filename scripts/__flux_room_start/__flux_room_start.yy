@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "__flux_tick",
+  "name": "__flux_room_start",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

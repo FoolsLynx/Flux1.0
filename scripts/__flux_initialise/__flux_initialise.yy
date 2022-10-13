@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "System",
-    "path": "folders/Flux/System.yy",
+    "name": "Core",
+    "path": "folders/Flux/System/Core.yy",
   },
 }

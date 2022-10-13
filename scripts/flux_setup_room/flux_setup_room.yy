@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "__flux_tick",
+  "name": "flux_setup_room",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Core",
-    "path": "folders/Flux/System/Core.yy",
+    "name": "Helpers",
+    "path": "folders/Flux/Helpers.yy",
   },
 }
